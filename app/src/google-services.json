@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1078951433699",
+    "project_id": "campusolx-e7200",
+    "storage_bucket": "campusolx-e7200.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1078951433699:android:375ff82a323812c7b37cd6",
+        "android_client_info": {
+          "package_name": "com.example.campusolx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1078951433699-ufa7v7n0v0p82qgpb8ce3uc015toh23o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhcQ0EFLD90wX8rtX8ADA3huCG5kF3iZQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1078951433699-ufa7v7n0v0p82qgpb8ce3uc015toh23o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

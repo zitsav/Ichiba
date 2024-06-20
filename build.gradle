@@ -1,0 +1,20 @@
+buildscript {
+    ext {
+        kotlin_version = '1.7.20' // Updated Kotlin version
+    }
+    repositories {
+        google() // Ensure Google repository is included
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.1.4' // Use latest stable version
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.google.gms:google-services:4.4.2' // Latest stable version
+    }
+}
+
+plugins {
+    id 'com.android.application' version '8.1.1' apply false
+    id 'com.android.library' version '8.1.1' apply false
+    id 'org.jetbrains.kotlin.android' version '1.7.20' apply false
+}

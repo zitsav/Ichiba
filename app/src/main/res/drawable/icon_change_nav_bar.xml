@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/color/menu_item_text_selector.xml -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Text color when the item is selected -->
+    <item android:state_selected="true" android:color="@color/App_colour" />
+
+    <!-- Default text color (when the item is not selected) -->
+    <item android:color="#484C52" />
+</selector>
