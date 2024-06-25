@@ -3,21 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background"
     android:layout_height="match_parent"
     tools:context=".activites.LoginActivity">
 
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="44dp"
         android:paddingEnd="10dp"
         app:layout_constraintEnd_toEndOf="@id/rightGuide"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="@id/leftGuide"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo2_removebg_preview" />
+        app:srcCompat="@drawable/logo_name_below" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftGuide"
@@ -33,52 +34,32 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent=".95" />
 
-
-<!--    <LinearLayout-->
-<!--        android:id="@+id/loginConstraint"-->
-<!--        android:layout_width="0dp"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:orientation="vertical"-->
-<!--        android:visibility="visible"-->
-<!--        app:layout_constraintEnd_toEndOf="@id/rightGuide"-->
-<!--        app:layout_constraintHorizontal_bias="0.0"-->
-<!--        app:layout_constraintStart_toStartOf="@id/leftGuide"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/imageView">-->
-
-    <TextView
-        android:id="@+id/loginText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Let's get you Logged In!!"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuide"
-        app:layout_constraintStart_toStartOf="@+id/leftGuide"
-        app:layout_constraintTop_toBottomOf="@id/imageView" />
-
     <TextView
         android:id="@+id/textView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:textSize="15sp"
-        android:text="Enter your infomation below"
+        android:layout_marginTop="72dp"
+        android:text="LDAP Login"
+        android:fontFamily="@font/poppins"
+        android:textSize="25sp"
+        android:textColor="@color/text_colour"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
-        app:layout_constraintTop_toBottomOf="@id/loginText" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <EditText
         android:id="@+id/login_email"
         android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="28dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/edit_text_background"
         android:drawableStart="@drawable/email_icon"
         android:drawablePadding="8dp"
         android:ems="10"
-        android:hint="@string/email"
+        android:textColor="@color/text_colour"
+        android:textColorHint="@color/edit_text_hint"
+        android:hint="Your enrollment number"
         android:inputType="textEmailAddress"
         android:padding="8dp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
@@ -88,81 +69,54 @@
     <EditText
         android:id="@+id/login_password"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/edit_text_background"
         android:drawableStart="@drawable/pass_icon"
         android:drawablePadding="8dp"
         android:ems="10"
-        android:hint="@string/password"
+        android:textColor="@color/text_colour"
+        android:textColorHint="@color/edit_text_hint"
+        android:hint="Your password"
         android:inputType="textPassword"
         android:padding="8dp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
         app:layout_constraintHorizontal_bias="0.355"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
+        android:password="true"
         app:layout_constraintTop_toBottomOf="@+id/login_email" />
 
-    <TextView
-        android:id="@+id/forgot_password"
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/rememberMeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/forgot_password"
-        android:textColor="#03A168"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuide"
-        app:layout_constraintTop_toBottomOf="@+id/login_password" />
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="@font/poppins"
+        android:shadowColor="@color/secondary_colour"
+        android:text="Keep logged in?  "
+        android:textColor="@color/text_colour"
+        app:thumbTint="@color/secondary_colour"
+        app:layout_constraintBottom_toTopOf="@+id/loginButton"
+        app:layout_constraintEnd_toEndOf="@id/rightGuide"
+        app:layout_constraintTop_toBottomOf="@+id/login_password"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="100dp"
-        android:backgroundTint="@color/App_colour"
-        android:text="@string/log_in"
+        android:layout_marginTop="200dp"
+        android:backgroundTint="@color/secondary_colour"
+        android:textColor="@color/text_colour"
+        android:text="LOG IN"
         app:cornerRadius="12dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
         app:layout_constraintTop_toBottomOf="@+id/login_password" />
-
-    <TextView
-        android:id="@+id/reg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
-        android:layout_marginBottom="24dp"
-        android:text="Register Now"
-        android:textColor="#03A168"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuide" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="4dp"
-        android:layout_marginBottom="24dp"
-        android:text="Not our Member Yet?"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/reg"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/leftGuide" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="152dp"
-        android:layout_height="92dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/dosis_extrabold"
-        android:lineSpacingExtra="-10dp"
-        android:text="Campus Olx"
-        android:textColor="@color/black"
-        android:textSize="42sp"
-        app:layout_constraintEnd_toStartOf="@+id/rightGuide"
-        app:layout_constraintHorizontal_bias="0.008"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <!--    </LinearLayout>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
