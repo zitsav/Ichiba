@@ -6,8 +6,8 @@
         android:id="@+id/imageTv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:src="@drawable/baseline_image_24"
         android:tint="@color/gray"/>
     <TextView

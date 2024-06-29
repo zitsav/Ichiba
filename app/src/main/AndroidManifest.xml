@@ -13,17 +13,32 @@
     <uses-permission android:name="android.permission.CAMERA" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/logo2_removebg_preview"
-        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:label="Ichiba"
         android:networkSecurityConfig="@xml/network_security_config"
-        android:roundIcon="@drawable/logo2_removebg_preview"
+        android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/Theme.CampusOLX"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".activites.EditUpiActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activites.EditPhoneActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activites.AdPostedActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activites.UserAdDetailsActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activites.UploadAdImagesActivity"
+            android:exported="true" />
         <activity
             android:name=".activites.VerifyUPIActivity"
             android:exported="false" />
@@ -38,16 +53,7 @@
             android:name=".activites.AdDetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".activites.VerifyAccountActivity"
-            android:exported="false" />
-        <activity
             android:name=".activites.AdCreateActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activites.DeleteActivity"
-            android:exported="true" />
-        <activity
-            android:name=".activites.ProfileEditActivity"
             android:exported="true" />
         <activity
             android:name=".activites.LoginActivity"

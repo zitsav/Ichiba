@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.ichiba.RetrofitInstance
 import com.example.ichiba.activites.AdDetailsActivity
 import com.example.ichiba.activites.EditAdActivity
+import com.example.ichiba.activites.UserAdDetailsActivity
 import com.example.ichiba.adapters.AdapterAd
 import com.example.ichiba.data.AuthDatabase
 import com.example.ichiba.data.AuthTokenRepository
@@ -71,7 +72,7 @@ class MyAdsFragment : Fragment(), AdapterAd.OnAdClickListener {
     }
 
     override fun onAdClick(productId: Int) {
-        val intent = Intent(mContext, EditAdActivity::class.java)
+        val intent = Intent(mContext, UserAdDetailsActivity::class.java)
         intent.putExtra("product_id", productId.toString())
         startActivity(intent)
     }
@@ -96,12 +97,11 @@ class MyAdsFragment : Fragment(), AdapterAd.OnAdClickListener {
                                 val ad = ModelAd().apply {
                                     id = product.productId
                                     uid = product.ownerId
-                                    brand = product.name
                                     category = product.category.name
                                     price = product.price.toString()
                                     title = product.name
                                     description = product.description
-                                    status = if (product.isSold) "Sold" else "Available"
+                                    isSold = product.isSold
                                     timestamp = product.createdAt.let {
                                         val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX")
                                         dateFormat.parse(it)?.time ?: 0L

@@ -1,178 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="@color/background"
     tools:context=".activites.EditAdActivity">
 
-    <LinearLayout
-        android:id="@+id/toolbarRl"
+    <RelativeLayout
+        android:id="@+id/toolbarRL"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <ImageButton
-            app:tint="@color/gray"
-            android:id="@+id/toolBarBackBtn"
+        android:layout_height="55dp">
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:backgroundTint="@android:color/transparent" />
-
+            android:id="@+id/toolBarBackBtn"
+            android:src="@drawable/ic_back"
+            app:tint="@color/text_colour"
+            android:layout_marginLeft="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"/>
         <TextView
             android:id="@+id/toolbarTitleTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="Ad Details"
-            style="@style/TextAppearance.MaterialComponents.Body1"
-            android:textColor="@android:color/black"/>
-
-        <ImageButton
-            android:id="@+id/toolBarDeleteBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            android:src="@drawable/baseline_close_24"
-            app:tint="@color/gray" />
-
-    </LinearLayout>
-
-    <ScrollView
+            android:text="Edit Post"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:textSize="20sp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarRL"
+        android:layout_above="@id/postAdBtn"
+        android:padding="10dp">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="20dp">
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/imageSliderVp"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="16dp" />
-
-            <ToggleButton
-                android:id="@+id/toggleButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:textOn="Sold"
-                android:textOff="For Sale"
-                android:layout_marginTop="20dp" />
+            android:layout_marginHorizontal="15dp"
+            android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/priceLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Price"
-                android:layout_marginTop="20dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/priceEt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.MaterialComponents.Body1"
-                    android:hint="₹00" />
-
-                <ImageButton
-                    android:id="@+id/priceUpdateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/group_62"
-                    android:contentDescription="Update Price" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/categoryLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                android:layout_marginTop="20dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6" />
-
-            <TextView
-                android:id="@+id/categoryTv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="@tools:sample/lorem[2]"
-                style="@style/TextAppearance.MaterialComponents.Body2"
-                android:layout_marginTop="10dp" />
-
-            <TextView
-                android:id="@+id/titleLabelTv"
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Title"
-                android:layout_marginTop="20dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6" />
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/poppins"
+                android:textSize="20sp"
+                android:textColor="@color/text_colour"
+                />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/titleEt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-
-                <EditText
-                    android:id="@+id/titleEt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.MaterialComponents.Body2"
-                    android:hint="Title" />
-
-                <ImageButton
-                    android:id="@+id/titleUpdateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/group_62"
-                    android:contentDescription="Update Title" />
-            </LinearLayout>
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:paddingHorizontal="20dp"
+                android:textColor="@color/text_colour"
+                android:textColorHint="@color/edit_text_hint"
+                android:hint="Your product title"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView"
+                android:padding="8dp"
+                />
 
             <TextView
-                android:id="@+id/descriptionLabel"
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Description"
                 android:layout_marginTop="20dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6" />
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/titleEt"
+                android:fontFamily="@font/poppins"
+                android:textSize="20sp"
+                android:textColor="@color/text_colour"
+                />
 
-            <LinearLayout
+            <EditText
+                android:id="@+id/descEt"
                 android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:layout_below="@id/textView2"
+                android:paddingHorizontal="20dp"
+                android:textColor="@color/text_colour"
+                android:gravity="start"
+                android:textColorHint="@color/edit_text_hint"
+                android:hint="Your product description"
+                android:layout_alignParentLeft="true"
+                android:padding="8dp"
+                />
+
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
+                android:text="Price"
+                android:layout_marginTop="20dp"
+                android:layout_below="@id/descEt"
+                android:fontFamily="@font/poppins"
+                android:textSize="20sp"
+                android:textColor="@color/text_colour"
+                />
 
-                <EditText
-                    android:id="@+id/descEt"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    style="@style/TextAppearance.MaterialComponents.Body2"
-                    android:hint="Description" />
+            <EditText
+                android:id="@+id/priceEt"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_text_background"
+                android:layout_below="@+id/textView3"
+                android:paddingHorizontal="20dp"
+                android:textColor="@color/text_colour"
+                android:textColorHint="@color/edit_text_hint"
+                android:hint="Price"
+                android:inputType="number"
+                android:layout_alignParentLeft="true"
+                android:padding="8dp"
+                />
 
-                <ImageButton
-                    android:id="@+id/descUpdateBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/group_62"
-                    android:contentDescription="Update Description" />
-            </LinearLayout>
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <Button
+        android:id="@+id/editAdBtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/secondary_colour"
+        android:textColor="@color/text_colour"
+        android:text="Edit Post"
+        app:cornerRadius="12dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

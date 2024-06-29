@@ -64,8 +64,10 @@ class AdapterAd(private val context: Context, private val adArrayList: List<Mode
         fun bind(modelAd: ModelAd) {
             binding.apply {
                 titleTv.text = modelAd.title
+                categoryTv.text = modelAd.category
                 descriptionTv.text = modelAd.description
-                priceTv.text = modelAd.price.toString()
+                priceTv.text = modelAd.price
+                if (modelAd.isSold) isSoldTv.text = "SOLD OUT" else isSoldTv.text = "FOR SALE"
                 dateTv.text = Utils.formatTimestampDate(modelAd.timestamp)
             }
         }

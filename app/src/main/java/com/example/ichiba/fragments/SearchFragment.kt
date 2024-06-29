@@ -8,12 +8,14 @@ import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.ImageView
+import android.widget.RadioGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
@@ -34,6 +36,7 @@ import com.example.ichiba.interfaces.ProductApi
 import com.example.ichiba.models.ModelAd
 import com.example.ichiba.utils.SortDialogFragment
 import com.example.ichiba.utils.Utils
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -68,8 +71,6 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setupCategories()
-
         val retrofit = RetrofitInstance.getRetrofitInstance()
         productApi = retrofit.create(ProductApi::class.java)
         authTokenRepository = AuthTokenRepository(AuthDatabase.getDatabase(requireContext()).authTokenDao())
@@ -78,61 +79,66 @@ class SearchFragment : Fragment() {
         binding.adsRv.layoutManager = LinearLayoutManager(mContext)
         binding.adsRv.adapter = adapterAd
 
-        binding.searchButton.setOnClickListener {
-            performSearch()
-        }
-
         binding.filterButton.setOnClickListener {
-            showSortOptionsDialog()
+            showSortOptionsBottomSheet()
         }
 
-        lifecycleScope.launch {
-            val authToken = authTokenRepository.getAuthToken()
-            val accessToken = "Bearer " + (authToken?.token ?: "")
-            fetchProducts(accessToken)
+        binding.searchEt.setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_ENTER) {
+                performSearch()
+                true
+            } else {
+                false
+            }
         }
     }
 
-    private fun showSortOptionsDialog() {
-        val options = arrayOf("Price: Low to High", "Price: High to Low", "Date: Newest First", "Date: Oldest First")
+    private fun showSortOptionsBottomSheet() {
+        val bottomSheetDialog = BottomSheetDialog(mContext)
+        val bottomSheetView = layoutInflater.inflate(R.layout.bottom_sheet_layout, null)
+        bottomSheetDialog.setContentView(bottomSheetView)
 
-        val builder = AlertDialog.Builder(mContext)
-        builder.setTitle("Sort By")
-            .setSingleChoiceItems(options, options.indexOf(sortOption)) { dialog, which ->
-                sortOption = options[which]
-                performSearch()
-                dialog.dismiss()
-            }
-            .setNegativeButton("Cancel") { dialog, _ ->
-                dialog.dismiss()
-            }
-            .create()
-            .show()
-    }
+        val categoryRadioGroup = bottomSheetView.findViewById<RadioGroup>(R.id.categoryOptionsRg)
+        val sortRadioGroup = bottomSheetView.findViewById<RadioGroup>(R.id.sortOptionsRg)
 
-    private fun setupCategories() {
-        val categoriesLayout = binding.categoriesLayout
-        val inflater = LayoutInflater.from(context)
-        var selectedCategoryView: View? = null
-
-        for (category in Utils.Utils.categories) {
-            val view = inflater.inflate(R.layout.row_category, categoriesLayout, false)
-            val categoryIcon = view.findViewById<ImageView>(R.id.categoryIconTv)
-            val categoryName = view.findViewById<TextView>(R.id.categoryTv)
-
-            categoryIcon.setImageResource(category.icon)
-            categoryName.text = category.name
-
-            view.setOnClickListener {
-                selectedCategory = category.name
-                performSearch()
-                selectedCategoryView?.setBackgroundColor(Color.TRANSPARENT)
-                view.setBackgroundColor(ContextCompat.getColor(mContext, R.color.selected_category))
-                selectedCategoryView = view
-            }
-
-            categoriesLayout.addView(view)
+        when (selectedCategory) {
+            "ELECTRONICS" -> categoryRadioGroup.check(R.id.electronicsBtn)
+            "COOLER" -> categoryRadioGroup.check(R.id.coolerBtn)
+            "BOOKS" -> categoryRadioGroup.check(R.id.booksBtn)
+            "MATTRESS" -> categoryRadioGroup.check(R.id.mattressBtn)
+            "OTHERS" -> categoryRadioGroup.check(R.id.othersBtn)
+            else -> categoryRadioGroup.check(R.id.anyCategory)
         }
+
+        when (sortOption) {
+            "Price: Low to High" -> sortRadioGroup.check(R.id.sortPriceLowToHigh)
+            "Price: High to Low" -> sortRadioGroup.check(R.id.sortPriceHighToLow)
+            "Date: Newest First" -> sortRadioGroup.check(R.id.sortDateNewestFirst)
+            "Date: Oldest First" -> sortRadioGroup.check(R.id.sortDateOldestFirst)
+        }
+
+        categoryRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            selectedCategory = when (checkedId) {
+                R.id.electronicsBtn -> "ELECTRONICS"
+                R.id.coolerBtn -> "COOLER"
+                R.id.booksBtn -> "BOOKS"
+                R.id.othersBtn -> "OTHERS"
+                R.id.mattressBtn -> "MATTRESS"
+                else -> ""
+            }
+        }
+
+        sortRadioGroup.setOnCheckedChangeListener { _, checkedId ->
+            sortOption = when (checkedId) {
+                R.id.sortPriceLowToHigh -> "Price: Low to High"
+                R.id.sortPriceHighToLow -> "Price: High to Low"
+                R.id.sortDateNewestFirst -> "Date: Newest First"
+                R.id.sortDateOldestFirst -> "Date: Oldest First"
+                else -> sortOption
+            }
+        }
+
+        bottomSheetDialog.show()
     }
 
     private fun performSearch() {
@@ -149,7 +155,6 @@ class SearchFragment : Fragment() {
             "Date: Newest First", "Date: Oldest First" -> "time"
             else -> ""
         }
-        Log.d("Search", "Search Query: $searchQuery, Sort By: $sortBy, Order: $order")
         val searchRequest = SearchRequest(
             category = selectedCategory,
             order = order,
@@ -183,12 +188,11 @@ class SearchFragment : Fragment() {
                             val ad = ModelAd().apply {
                                 id = product.productId
                                 uid = product.ownerId
-                                brand = product.name
                                 category = product.category.name
                                 price = product.price.toString()
                                 title = product.name
                                 description = product.description
-                                status = if (product.isSold) "Sold" else "Available"
+                                isSold = product.isSold
                                 timestamp = product.createdAt.let {
                                     val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX", Locale.getDefault())
                                     dateFormat.parse(it)?.time ?: 0L

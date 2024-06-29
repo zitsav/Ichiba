@@ -96,12 +96,11 @@ class HomeFragment : Fragment(), AdapterAd.OnAdClickListener {
                             val ad = ModelAd().apply {
                                 id = product.productId
                                 uid = product.ownerId
-                                brand = product.name
                                 category = product.category.name
                                 price = product.price.toString()
                                 title = product.name
                                 description = product.description
-                                status = if (product.isSold) "Sold" else "Available"
+                                isSold = product.isSold
                                 timestamp = product.createdAt.let {
                                     val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX", Locale.getDefault())
                                     dateFormat.parse(it)?.time ?: 0L

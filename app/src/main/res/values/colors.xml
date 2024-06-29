@@ -24,6 +24,12 @@
     <color name="edit_text_colour">#1F1F23</color>
     <color name="edit_text_hint">#35383F</color>
     <color name="card_bg">#1C1C1E</color>
+    <color name="profile_text">#9D9D9D</color>
+    <color name="profile_card_bg">#1F1F23</color>
+    <color name="divider">#35383F</color>
+
+    <color name="green">#00FF00</color>
+    <color name="red">#FF0000</color>
 
 
 
@@ -37,10 +43,4 @@
     </selector>
     </color>
 
-
-    <!--    <color name="home_20">#330D47A1</color>-->
-<!--    <color name="settings_20">#336A6868</color>-->
-<!--    <color name="Myads_20">#33DD09A9</color>-->
-<!--    <color name="plus_20">#3300ACFF</color>-->
-<!--    <color name="account_20">#335E35B1</color>-->
 </resources>

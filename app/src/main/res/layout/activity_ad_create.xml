@@ -4,180 +4,185 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".activites.AdCreateActivity">
 
     <RelativeLayout
         android:id="@+id/toolbarRL"
         android:layout_width="match_parent"
         android:layout_height="55dp">
-        <ImageButton
-            app:tint="@color/gray"
+        <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/toolBarBackBtn"
             android:src="@drawable/ic_back"
+            app:tint="@color/text_colour"
+            android:layout_marginLeft="20dp"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:padding="10dp"/>
+            android:layout_margin="10dp"/>
         <TextView
             android:id="@+id/toolbarTitleTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Create Ad"
-            style="@style/TextAppearance.MaterialComponents.Body1"
+            android:text="Create Post"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:textSize="20sp"
             android:layout_centerInParent="true"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/addImage"
-            android:src="@drawable/baseline_add_photo_alternate_24"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            app:tint="@color/gray" />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_alignParentBottom="true"
-            android:background="@color/gray"/>
-
     </RelativeLayout>
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbarRL"
         android:layout_above="@id/postAdBtn"
-        android:padding="10dp">
+        >
         <RelativeLayout
             android:layout_width="match_parent"
+            android:layout_marginHorizontal="15dp"
             android:layout_height="wrap_content">
+
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imagesLabelTv"
-                android:text="Pick upto 10 images"
-                style="@style/TextAppearance.MaterialComponents.Body1"/>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/imagesRv"
-                android:layout_below="@+id/imagesLabelTv"
-                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                app:spanCount="4"
-                tools:listitem="@layout/row_images_picked"/>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_marginTop="10dp"
-                android:layout_below="@id/imagesRv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/brandTil"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:startIconDrawable="@drawable/baseline_logo_dev_24"
-                android:hint="Brand">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/brandEt"
-                    android:inputType="textPersonName|textCapSentences"/>
+                android:text="Title"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:fontFamily="@font/poppins"
+                android:textSize="20sp"
+                android:textColor="@color/text_colour"
+                />
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_below="@id/brandTil"
+            <EditText
+                android:id="@+id/titleEt"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/categoryTil"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:startIconDrawable="@drawable/baseline_category_24"
-                android:hint="Category">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="none"
-                    android:id="@+id/categoryAct"/>
+                android:layout_height="60dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:paddingHorizontal="20dp"
+                android:textColor="@color/text_colour"
+                android:textColorHint="@color/edit_text_hint"
+                android:hint="Your product title"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/textView"
+                android:padding="8dp"
+                />
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_below="@id/categoryTil"
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@id/titleEt"
+                android:fontFamily="@font/poppins"
+                android:textSize="20sp"
+                android:textColor="@color/text_colour"
+                />
+
+            <EditText
+                android:id="@+id/descEt"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/edit_text_background"
+                android:ems="10"
+                android:layout_below="@id/textView2"
+                android:paddingHorizontal="20dp"
+                android:textColor="@color/text_colour"
+                android:gravity="start"
+                android:textColorHint="@color/edit_text_hint"
+                android:hint="Your product description"
+                android:layout_alignParentLeft="true"
+                android:padding="8dp"
+                />
+
+
+            <LinearLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/priceTil"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:startIconDrawable="@drawable/baseline_attach_money_24"
-                android:hint="Price">
-                <EditText
-                    android:layout_width="match_parent"
+                android:id="@+id/markers"
+                android:orientation="horizontal"
+                android:layout_below="@id/descEt"
+                android:layout_marginTop="20dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:text="Price"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_colour"
+                    />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="Category"
+                    android:layout_weight="1.25"
+                    android:layout_marginLeft="20dp"
+                    android:fontFamily="@font/poppins"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_colour"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/markers"
+                android:layout_marginBottom="30dp"
+                android:layout_marginTop="5dp">
+
+                <EditText
                     android:id="@+id/priceEt"
-                    android:inputType="number|textCapSentences"/>
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/edit_text_background"
+                    android:paddingHorizontal="20dp"
+                    android:textColor="@color/text_colour"
+                    android:textColorHint="@color/edit_text_hint"
+                    android:hint="Price"
+                    android:inputType="number"
+                    android:padding="8dp"
+                    android:layout_marginRight="10dp"
+                    />
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_below="@id/priceTil"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/titleTil"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:startIconDrawable="@drawable/baseline_title_24"
-                android:hint="Title">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/titleEt"
-                    android:inputType="textPersonName|textCapSentences" />
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:id="@+id/categorySpinner"
+                    android:layout_width="0dp"
+                    android:layout_height="60dp"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_weight="1.25"
+                    android:background="@drawable/edit_text_background"
+                    android:paddingHorizontal="20dp"
+                    android:textColor="@color/text_colour" />
+            </LinearLayout>
 
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_below="@id/titleTil"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/descTil"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                app:boxCornerRadiusBottomStart="8dp"
-                app:boxCornerRadiusBottomEnd="8dp"
-                app:boxCornerRadiusTopEnd="8dp"
-                app:boxCornerRadiusTopStart="8dp"
-                app:startIconDrawable="@drawable/baseline_menu_book_24"
-                android:hint="Description">
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/descEt"
-                    android:minHeight="70dp"
-                    android:inputType="textMultiLine|textCapSentences" />
-
-            </com.google.android.material.textfield.TextInputLayout>
         </RelativeLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.button.MaterialButton
+    <Button
         android:id="@+id/postAdBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:minHeight="50dp"
-        android:text="Post Ad"
-        android:backgroundTint="@color/app_theme"
-        app:cornerRadius="8dp" />
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:backgroundTint="@color/secondary_colour"
+        android:textColor="@color/text_colour"
+        android:text="Proceed"
+        app:cornerRadius="12dp"
+        android:textSize="20sp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

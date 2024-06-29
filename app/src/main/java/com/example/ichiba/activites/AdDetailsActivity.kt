@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.example.ichiba.R
 import com.example.ichiba.RetrofitInstance
 import com.example.ichiba.adapters.AdapterImageSlider
 import com.example.ichiba.data.AuthDatabase
@@ -78,14 +79,24 @@ class AdDetailsActivity : AppCompatActivity() {
 
     private fun displayProductData(product: Product) {
         binding.apply {
-            priceValue.text = product.price.toString()
+            priceTv.text = product.price.toString()
             dateTv.text = product.createdAt.take(10)
             categoryTv.text = product.category.name
             titleTv.text = product.name
             descTv.text = product.description
+            if (product.isSold) {
+                isSoldTv.text = "SOLD OUT"
+                isSoldTv.setTextColor(getColor(R.color.red))
+            } else {
+                isSoldTv.text = "FOR SALE"
+                isSoldTv.setTextColor(getColor(R.color.green))
+            }
 
             sellerNameTv.text = product.owner.name
             enrollNoTv.text = product.owner.enrollmentNumber
+            if (product.owner.phoneNumber?.isNotEmpty() == true) {
+                contactNoTv.text = product.owner.phoneNumber
+            }
 
             if (product.owner.profilePicture != null) {
                 Glide.with(this@AdDetailsActivity)

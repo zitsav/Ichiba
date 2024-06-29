@@ -1,216 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".activites.AdDetailsActivity">
 
     <RelativeLayout
-        android:id="@+id/toolbarRl"
         android:layout_width="match_parent"
-        android:layout_height="55dp">
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/toolBarDeleteBtn"
-            android:src="@drawable/baseline_close_24"
-            android:layout_toStartOf="@id/toolBarEditBtn"
-            android:background="@android:color/transparent"
-            android:layout_centerVertical="true"/>
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/toolBarEditBtn"
-            android:src="@drawable/baseline_bed_24"
-            android:layout_toStartOf="@id/toolbarFavBtn"
-            android:background="@android:color/transparent"
-            android:layout_centerVertical="true"/>
-        <ImageButton
-            app:tint="@color/gray"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/toolBarBackBtn"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:padding="10dp"
-            android:backgroundTint="@android:color/transparent"
-            android:layout_centerVertical="true"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_height="wrap_content"
-        android:id="@+id/toolbarTitleTv"
-        android:text="Ad Details"
-        android:layout_centerInParent="true"/>
+        android:background="@color/background">
 
-        <ImageButton
-            android:id="@+id/toolbarFavBtn"
-            android:layout_width="34dp"
-            android:layout_height="49dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:background="@android:color/transparent"
-            android:padding="10dp"
-            android:src="@drawable/baseline_favorite_border_24"
-            app:tint="@color/gray" />
-        <View
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/imageSliderVp"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:background="@color/gray"
-            android:layout_alignParentBottom="true"/>
+            android:layout_height="400dp"
+            android:background="@color/background"
+            android:layout_alignParentTop="true" />
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/baseline_arrow_back_ios_24"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            app:tint="@color/text_colour" />
 
-    </RelativeLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbarRl">
+        <TextView
+            tools:text="Your App Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/titleTv"
+            android:layout_below="@+id/categoryTv"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/text_colour"
+            android:fontFamily="@font/poppins"
+            android:textSize="30sp"
+            android:layout_marginTop="0dp" />
+
+        <TextView
+            tools:text="CATEGORY"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/categoryTv"
+            android:layout_below="@id/imageSliderVp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:textColor="@color/text_colour"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp"
+            />
+
+        <TextView
+            tools:text="26 JUN 2024"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/dateTv"
+            android:layout_below="@id/titleTv"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/text_colour"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp" />
+
+        <TextView
+            tools:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/descTv"
+            android:layout_below="@id/dateTv"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="20dp"
+            android:textColor="@color/text_colour"
+            android:fontFamily="@font/poppins"
+            android:textSize="15sp" />
+
+        <TextView
+            tools:text="SOLD"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/isSoldTv"
+            android:layout_below="@id/descTv"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/text_colour"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="25sp" />
+
+        <TextView
+            android:text="₹"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/currencyTv"
+            android:layout_below="@id/descTv"
+            android:layout_marginTop="19dp"
+            android:layout_toLeftOf="@id/priceTv"
+            android:textColor="@color/text_colour"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="18sp"
+            android:layout_marginRight="3dp" />
+
+        <TextView
+            tools:text="1000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/priceTv"
+            android:layout_below="@id/descTv"
+            android:layout_marginTop="15dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/text_colour"
+            android:fontFamily="@font/poppins_bold"
+            android:textSize="25sp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp">
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/imageSliderVp"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginTop="16dp" />
+            android:background="@drawable/background1"
+            android:layout_marginHorizontal="20dp"
+            android:padding="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_below="@id/priceTv">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/sellerProfileTv"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                tools:src="@drawable/placeholder_profile"
+                app:shapeAppearanceOverlay="@style/ImageStyle_CIrcle" />
+
             <TextView
-                android:id="@+id/priceTv"
+                android:layout_marginStart="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="₹"
-                android:layout_below="@id/imageSliderVp"
-                style="@style/TextAppearance.MaterialComponents.Body1"/>
+                android:id="@+id/sellerNameTv"
+                android:layout_toEndOf="@+id/sellerProfileTv"
+                android:textColor="@color/text_colour"
+                android:fontFamily="@font/poppins"
+                android:textSize="15sp"
+                tools:text="Seller Man" />
+
             <TextView
+                android:id="@+id/contactNoTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/priceValue"
-                android:text="00"
-                android:layout_below="@id/imageSliderVp"
-                android:layout_toEndOf="@id/priceTv"
-                style="@style/TextAppearance.MaterialComponents.Body1"/>
+                android:text="+916942069420"
+                android:textColor="@color/profile_text"
+                android:layout_marginRight="15dp"
+                android:textSize="14sp"
+                android:layout_below="@id/sellerNameTv"
+                android:layout_alignParentRight="true" />
+
             <TextView
+                android:id="@+id/enrollNoTv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/dateTv"
-                style="@style/TextAppearance.MaterialComponents.Caption"
-                android:text="dd/MM/yyyy"
-                android:layout_below="@id/imageSliderVp"
-                android:layout_alignParentEnd="true"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/categoryLabel"
-                android:text="Category"
-                android:layout_below="@id/dateTv"
-                android:layout_marginTop="20dp"
-                style="@style/TextAppearance.MaterialComponents.Headline6"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/categoryTv"
-                tools:text="@tools:sample/lorem[2]"
-                style="@style/TextAppearance.MaterialComponents.Body2"
-                android:layout_below="@id/categoryLabel"/>
-            <TextView
-                android:text="Title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/titleLabelTv"
-                android:layout_below="@id/categoryTv"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_marginTop="20dp"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/titleTv"
-                tools:text="@tools:sample/lorem[10]"
-                android:layout_below="@id/titleLabelTv"
-                style="@style/TextAppearance.MaterialComponents.Body2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/descriptionLabel"
-                android:layout_below="@id/titleTv"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_marginTop="20dp"
-                android:text="Description"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/descTv"
-                tools:text="@tools:sample/lorem[20]"
-                android:layout_below="@id/descriptionLabel"
-                style="@style/TextAppearance.MaterialComponents.Body2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/sellerLevel"
-                android:layout_below="@id/descTv"
-                style="@style/TextAppearance.MaterialComponents.Headline6"
-                android:layout_marginTop="20dp"
-                android:text="Seller Info"/>
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/sellerProfileCv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/sellerLevel"
-                app:cardCornerRadius="10dp"
-                app:cardUseCompatPadding="true"
-                app:contentPadding="10dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/sellerProfileTv"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:src="@drawable/ic_person"
-                        app:shapeAppearanceOverlay="@style/ImageStyle_CIrcle" />
-                    <TextView
-                        android:layout_marginStart="20dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/sellerNameTv"
-                        android:layout_toEndOf="@+id/sellerProfileTv"
-                        style="@style/TextAppearance.MaterialComponents.Body1"
-                        tools:text="Sumit Das"
-                        />
-                    <TextView
-                        android:layout_marginStart="20dp"
-                        style="@style/TextAppearance.MaterialComponents.Caption"
-                        android:id="@+id/rollNoTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Roll Number"
-                        android:layout_below="@id/sellerNameTv"
-                        android:layout_toEndOf="@+id/sellerProfileTv"/>
-                    <TextView
-                        android:layout_marginStart="10dp"
-                        android:layout_toEndOf="@id/rollNoTv"
-                        style="@style/TextAppearance.MaterialComponents.Caption"
-                        android:id="@+id/enrollNoTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        tools:text="IIT2021229"
-                        android:layout_below="@id/sellerNameTv" />
-
-
-
-
-                </RelativeLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-
-
-
-
+                android:layout_below="@id/sellerNameTv"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="2dp"
+                android:textSize="14sp"
+                android:textColor="@color/profile_text"
+                android:layout_toRightOf="@id/sellerProfileTv"
+                tools:text="IIT2021229" />
 
         </RelativeLayout>
-    </ScrollView>
 
+    </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>

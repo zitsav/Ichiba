@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/profile_card_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Categories"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/text_colour"
+        android:paddingBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/categoryOptionsRg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/anyCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:buttonTint="@color/secondary_colour"
+            android:text="Any category" />
+
+        <RadioButton
+            android:id="@+id/electronicsBtn"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Electronics" />
+
+        <RadioButton
+            android:id="@+id/coolerBtn"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Cooler" />
+
+        <RadioButton
+            android:id="@+id/booksBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Books" />
+
+        <RadioButton
+            android:id="@+id/mattressBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Mattress" />
+
+        <RadioButton
+            android:id="@+id/othersBtn"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Others" />
+
+    </RadioGroup>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="17dp"
+        android:layout_height="1dp"
+        android:layout_marginVertical="15dp"
+        android:layout_below="@id/nameDetailsLL"
+        android:background="@color/divider"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sort By"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/text_colour"
+        android:paddingBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/sortOptionsRg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/sortPriceLowToHigh"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Price: Low to High" />
+
+        <RadioButton
+            android:id="@+id/sortPriceHighToLow"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Price: High to Low" />
+
+        <RadioButton
+            android:id="@+id/sortDateNewestFirst"
+            android:buttonTint="@color/secondary_colour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Date: Newest First" />
+
+        <RadioButton
+            android:id="@+id/sortDateOldestFirst"
+            android:layout_width="wrap_content"
+            android:buttonTint="@color/secondary_colour"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/text_colour"
+            android:text="Date: Oldest First" />
+    </RadioGroup>
+</LinearLayout>

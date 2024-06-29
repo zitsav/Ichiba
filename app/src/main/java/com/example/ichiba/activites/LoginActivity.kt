@@ -117,17 +117,14 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun navigateToNextActivity(user: User) {
-        val intent = if (user.isVerified) {
-            Intent(this@LoginActivity, MainActivity::class.java)
-        } else {
-            Intent(this@LoginActivity, VerifyAccountActivity::class.java)
+        val intent = if (user.phoneNumber.isNullOrEmpty()) {
+            Intent(this@LoginActivity, VerifyPhoneActivity::class.java)
         }
-
-        intent.apply {
-            putExtra("name", user.name)
-            putExtra("enrollmentNo", user.enrollmentNumber)
-            putExtra("phoneNumber", user.phoneNumber)
-            putExtra("profilePictureUrl", user.profilePicture)
+        else if  (user.upiId.isNullOrEmpty()){
+            Intent(this@LoginActivity, VerifyUPIActivity::class.java)
+        }
+        else {
+            Intent(this@LoginActivity, MainActivity::class.java)
         }
 
         startActivity(intent)

@@ -93,6 +93,7 @@
         android:layout_height="wrap_content"
         android:text="SKIP"
         android:textColor="@color/text_colour"
+        android:id="@+id/skipTv"
         android:fontFamily="@font/poppins_medium"
         android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
@@ -104,19 +105,17 @@
         android:id="@+id/loginButton"
         android:layout_width="0dp"
         android:layout_height="60dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/secondary_colour"
-        android:textColor="@color/text_colour"
-        android:text="Continue"
-        app:cornerRadius="12dp"
-        android:textSize="20sp"
         android:fontFamily="@font/poppins_medium"
+        android:text="Continue"
+        android:textColor="@color/text_colour"
+        android:textSize="20sp"
+        app:cornerRadius="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="@+id/leftGuide"
-        app:layout_constraintTop_toBottomOf="@+id/phoneEt"
-        />
-
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/leftGuide" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

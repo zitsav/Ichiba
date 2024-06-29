@@ -39,11 +39,7 @@ class SplashActivity : AppCompatActivity() {
             val currentTime = Date(System.currentTimeMillis())
 
             val resultIntent = if (authToken != null && currentTime.before(authToken.expirationTime)) {
-                if (authTokenRepository.getAuthToken()?.isVerified == true) {
-                    Intent(this@SplashActivity, MainActivity::class.java)
-                } else {
-                    Intent(this@SplashActivity, VerifyAccountActivity::class.java)
-                }
+                Intent(this@SplashActivity, MainActivity::class.java)
             }
             else {
                 if (authToken != null) {

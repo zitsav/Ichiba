@@ -8,19 +8,44 @@
     android:layout_height="match_parent"
     tools:context=".fragments.AccountFragment">
 
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/profileTvAcc"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginTop="50dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/i2"
+    <RelativeLayout
+        android:id="@+id/changeImage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
         app:layout_constraintTop_toTopOf="parent"
-        app:shapeAppearanceOverlay="@style/ImageStyle_CIrcle"
-        tools:layout_conversion_absoluteHeight="120dp"
-        tools:layout_conversion_absoluteWidth="120dp" />
+        app:layout_editor_absoluteX="100dp"
+        app:layout_editor_absoluteY="100dp">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profileIv"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_centerInParent="true"
+            android:scaleType="centerCrop"
+            android:src="@drawable/placeholder_profile"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ImageStyle_CIrcle"
+            tools:layout_conversion_absoluteHeight="120dp"
+            tools:layout_conversion_absoluteWidth="120dp" />
+
+        <ImageView
+            android:id="@+id/imagePicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/profileIv"
+            android:layout_alignEnd="@id/profileIv"
+            android:layout_alignBottom="@id/profileIv"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/group_62" />
+
+
+    </RelativeLayout>
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -43,20 +68,20 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_medium"
-        android:text="Name"
+        tools:text="Utsav Singh Tomar"
         android:textColor="@color/text_colour"
         android:textStyle="bold"
         android:textSize="16sp"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
-        app:layout_constraintTop_toBottomOf="@+id/profileTvAcc" />
+        app:layout_constraintTop_toBottomOf="@+id/changeImage" />
 
     <TextView
         android:id="@+id/emailTv"
         android:layout_width="wrap_content"
         android:fontFamily="@font/poppins"
         android:layout_height="wrap_content"
-        android:text="email"
+        tools:text="iit2021112@iiita.ac.in"
         android:textColor="@color/secondary_colour"
         app:layout_constraintEnd_toStartOf="@+id/rightGuide"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
@@ -69,15 +94,16 @@
         android:id="@+id/basicDetailsTv"
         android:textColor="@color/text_colour"
         android:text="Basic details"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_medium"
+        android:layout_marginTop="18dp"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
         app:layout_constraintTop_toBottomOf="@id/emailTv"
         />
 
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout5"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -89,194 +115,191 @@
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
         app:layout_constraintTop_toBottomOf="@id/basicDetailsTv">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:id="@+id/nameDetailsLL"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="Name"
+                android:textColor="@color/profile_text"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/fullNameTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="15dp"
+                tools:text="Utsav Singh Tomar"
+                android:textColor="@color/text_colour"
+                android:textSize="15sp"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="17dp"
+            android:layout_marginTop="-2dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/nameDetailsLL"
+            android:background="@color/divider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/nameDetailsLL"
+            android:id="@+id/enrollDetailsLL"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="Enrollment Number"
+                android:textColor="@color/profile_text"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/enrollNoTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="15dp"
+                tools:text="IIT2021112"
+                android:textColor="@color/text_colour"
+                android:textSize="15sp"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="17dp"
+            android:layout_marginTop="-2dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/enrollDetailsLL"
+            android:background="@color/divider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="3dp"
+            android:layout_below="@+id/enrollDetailsLL"
+            android:id="@+id/batchDetailsLL"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="Batch"
+                android:textColor="@color/profile_text"
+                android:textSize="15sp"
+                />
+
+            <TextView
+                android:id="@+id/batchTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="15dp"
+                tools:text="IIT2021"
+                android:textColor="@color/text_colour"
+                android:textSize="15sp"
+                />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginHorizontal="17dp"
+            android:layout_marginTop="-2dp"
+            android:layout_height="1dp"
+            android:layout_below="@id/batchDetailsLL"
+            android:background="@color/divider"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
             android:layout_marginVertical="3dp"
-            android:layout_weight="0.90"
-            android:orientation="vertical">
+            android:layout_below="@+id/batchDetailsLL"
+            android:id="@+id/programDetailsLL"
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="3dp"
-                android:orientation="horizontal">
+            <TextView
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins"
+                android:layout_marginLeft="15dp"
+                android:gravity="center_vertical"
+                android:text="Program"
+                android:textColor="@color/profile_text"
+                android:textSize="15sp"
+                />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Name"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
+            <TextView
+                android:id="@+id/programTv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentEnd="true"
+                android:fontFamily="@font/poppins"
+                android:gravity="center_vertical"
+                android:layout_marginEnd="15dp"
+                tools:text="B.Tech.(IT)"
+                android:textColor="@color/text_colour"
+                android:textSize="15sp"
+                />
 
-                <TextView
-                    android:id="@+id/nameTvAcc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:drawablePadding="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Name"
-                    android:textColor="#00C27C"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
-            </LinearLayout>
+        </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="3dp"
-                android:background="@drawable/background1"
-                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
-                    android:drawablePadding="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Enrollment Number"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="605dp" />
-
-                <TextView
-                    android:id="@+id/rollNoTvAcc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:drawablePadding="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Name"
-                    android:textColor="#00C27C"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="3dp"
-                android:background="@drawable/background1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Batch"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp" />
-
-                <TextView
-                    android:id="@+id/batchTvAcc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:gravity="center_vertical"
-                    android:drawablePadding="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:text="Name"
-                    android:textColor="#00C27C"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="3dp"
-                android:background="@drawable/background1"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Program"
-                    android:textColor="#000000"
-                    android:textSize="15sp"
-                    tools:layout_conversion_absoluteHeight="24dp"
-
-                    tools:layout_conversion_absoluteWidth="388dp" />
-
-                <TextView
-                    android:id="@+id/programTvAcc"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:drawablePadding="15dp"
-                    android:fontFamily="@font/poppins"
-                    android:gravity="center_vertical"
-                    android:text="Name"
-                    android:textColor="#00C27C"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
-            </LinearLayout>
-
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:id="@+id/contactDetailsTv"
         android:textColor="@color/text_colour"
         android:text="Contact details"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:textSize="18sp"
+        android:fontFamily="@font/poppins_medium"
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
         app:layout_constraintTop_toBottomOf="@id/linearLayout5"
         />
 
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout6"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -288,108 +311,126 @@
         app:layout_constraintStart_toStartOf="@+id/leftGuide"
         app:layout_constraintTop_toBottomOf="@id/contactDetailsTv">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="3dp"
-            android:layout_weight="0.90"
-            android:orientation="vertical">
-
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_height="wrap_content"
-                android:layout_marginVertical="3dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="3dp"
+                android:id="@+id/contactDetailsLL"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
                     android:fontFamily="@font/poppins"
+                    android:layout_marginLeft="15dp"
                     android:gravity="center_vertical"
-                    android:text="Phone Number"
-                    android:textColor="#000000"
+                    android:text="Contact Number"
+                    android:textColor="@color/profile_text"
                     android:textSize="15sp"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
+                    />
 
                 <TextView
-                    android:id="@+id/phoneNumberTv"
+                    android:id="@+id/contactNoTv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:drawablePadding="15dp"
+                    android:layout_toStartOf="@id/editPhoneButton"
                     android:fontFamily="@font/poppins"
                     android:gravity="center_vertical"
-                    android:text="Name"
-                    android:textColor="#00C27C"
+                    android:layout_marginRight="5dp"
+                    tools:text="+917000699125"
+                    android:textColor="@color/text_colour"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
-            </LinearLayout>
+                    />
 
-            <LinearLayout
+                <ImageView
+                    android:id="@+id/editPhoneButton"
+                    android:src="@drawable/baseline_arrow_forward_ios_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    app:tint="@color/profile_text"
+                    android:layout_height="match_parent"
+                    android:background="@color/white_transparent"
+                    android:contentDescription="edit UPI"
+                    />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="17dp"
+                android:layout_height="1dp"
+                android:layout_below="@id/contactDetailsLL"
+                android:background="@color/divider"/>
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:layout_marginVertical="3dp"
-                android:background="@drawable/background1"
+                android:layout_below="@id/contactDetailsLL"
+                android:id="@+id/upiIdLL"
                 android:orientation="horizontal">
 
                 <TextView
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="4dp"
-                    android:drawablePadding="15dp"
                     android:fontFamily="@font/poppins"
+                    android:layout_marginLeft="15dp"
                     android:gravity="center_vertical"
                     android:text="UPI ID"
-                    android:textColor="#000000"
+                    android:textColor="@color/profile_text"
                     android:textSize="15sp"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="605dp" />
+                    />
 
                 <TextView
                     android:id="@+id/upiIdTv"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="4dp"
-                    android:drawablePadding="15dp"
+                    android:layout_toStartOf="@id/editUPIButton"
                     android:fontFamily="@font/poppins"
                     android:gravity="center_vertical"
-                    android:text="Name"
-                    android:textColor="#00C27C"
+                    android:layout_marginRight="5dp"
+                    tools:text="7000699125@ybl"
+                    android:textColor="@color/text_colour"
                     android:textSize="15sp"
-                    android:textStyle="bold"
-                    tools:layout_conversion_absoluteHeight="24dp"
-                    tools:layout_conversion_absoluteWidth="388dp"
-                    tools:layout_editor_absoluteX="12dp"
-                    tools:layout_editor_absoluteY="501dp" />
+                    />
 
-                <ImageButton
+                <ImageView
                     android:id="@+id/editUPIButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="4dp"
+                    android:src="@drawable/baseline_arrow_forward_ios_24"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="wrap_content"
+                    android:gravity="center_vertical"
+                    app:tint="@color/profile_text"
+                    android:layout_height="match_parent"
+                    android:background="@color/white_transparent"
                     android:contentDescription="edit UPI"
-                    android:drawable="@drawable/baseline_edit_24" />
+                    />
 
-            </LinearLayout>
+            </RelativeLayout>
+    </RelativeLayout>
 
-        </LinearLayout>
-    </LinearLayout>
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:backgroundTint="@color/secondary_colour"
+        android:textColor="@color/text_colour"
+        android:text="LOG OUT"
+        app:cornerRadius="12dp"
+        android:textSize="20sp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins_medium"
+        app:layout_constraintEnd_toStartOf="@+id/rightGuide"
+        app:layout_constraintStart_toStartOf="@+id/leftGuide"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

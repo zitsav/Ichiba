@@ -12,7 +12,6 @@ data class AuthToken(
     val userId: Int?,
     val name: String?,
     val enrollmentNumber: String?,
-    val isVerified: Boolean?,
     val program: String?,
     val batchYear: Int?,
     val batch: String?,

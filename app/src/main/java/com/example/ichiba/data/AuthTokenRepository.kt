@@ -15,7 +15,6 @@ class AuthTokenRepository(private val authTokenDao: AuthTokenDao) {
             userId = user.userId,
             name = user.name,
             enrollmentNumber = user.enrollmentNumber,
-            isVerified = user.isVerified,
             program = user.program,
             batchYear = user.batchYear,
             batch = user.batch,
